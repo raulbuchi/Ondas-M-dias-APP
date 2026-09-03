@@ -1,0 +1,6 @@
+{
+  "name": "Grupo Ondas Médias de Comunicação",
+  "description": "Ecossistema Digital Buchi & Grupo Ondas Médias: Notícias em tempo real, gerador multimodal e análise gráfica de pesquisas políticas e de infraestrutura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
