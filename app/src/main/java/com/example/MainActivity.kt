@@ -168,26 +168,6 @@ fun MainScreen(viewModel: MainViewModel) {
                         ),
                         modifier = Modifier.testTag("nav_tab_news")
                     )
-
-                    NavigationBarItem(
-                        selected = uiState.viewingBlog == null && uiState.selectedMainTab == 2,
-                        onClick = { viewModel.setMainTab(2) },
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.BarChart,
-                                contentDescription = "Pesquisas"
-                            )
-                        },
-                        label = { Text("Pesquisas", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color.White,
-                            selectedTextColor = EditorialNavyDeep,
-                            indicatorColor = EditorialCobalt,
-                            unselectedIconColor = EditorialInkMuted,
-                            unselectedTextColor = EditorialInkMuted
-                        ),
-                        modifier = Modifier.testTag("nav_tab_surveys")
-                    )
                 }
             },
             modifier = Modifier
@@ -256,6 +236,7 @@ fun MainScreen(viewModel: MainViewModel) {
                                         idea = uiState.ideaInput,
                                         onIdeaChange = { viewModel.onIdeaChanged(it) },
                                         isLoading = uiState.isLoading,
+                                        onDispatchN8n = { viewModel.dispatchEmailToN8n(context) },
                                         onGenerate = { viewModel.generateContent() },
                                         onFillExample = {
                                             viewModel.onTitleChanged(uiState.selectedRecipient.exampleTitle)
@@ -295,21 +276,6 @@ fun MainScreen(viewModel: MainViewModel) {
                                 onToggleBookmark = { viewModel.toggleNewsBookmark(it) },
                                 onSendToGenerator = { title, summary ->
                                     viewModel.sendToGenerator(title, summary)
-                                }
-                            )
-                        }
-
-                        2 -> {
-                            // TAB 2: Research Data Analytics
-                            ResearchAnalyticsScreen(
-                                surveys = surveysList,
-                                selectedSurveyId = uiState.selectedSurveyId,
-                                onSelectSurvey = { viewModel.setSelectedSurveyId(it) },
-                                onAddSurvey = { viewModel.addSurvey(it) },
-                                onGenerateReport = { viewModel.generateSurveyReport(it) },
-                                isGeneratingReport = uiState.isGeneratingReport,
-                                onSendToGenerator = { title, idea ->
-                                    viewModel.sendToGenerator(title, idea)
                                 }
                             )
                         }

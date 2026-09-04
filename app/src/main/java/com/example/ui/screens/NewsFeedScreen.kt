@@ -68,25 +68,14 @@ fun NewsFeedScreen(
     onToggleBookmark: (NewsItemEntity) -> Unit,
     onSendToGenerator: (title: String, summary: String) -> Unit
 ) {
-    var selectedSource by remember { mutableStateOf("TODOS PORTAIS") }
     var selectedCategory by remember { mutableStateOf("TODAS") }
     var searchQuery by remember { mutableStateOf("") }
     var showOnlyBookmarked by remember { mutableStateOf(false) }
 
-    val sources = listOf("TODOS PORTAIS", "FOLHA", "CNN BRASIL", "O ANTAGONISTA", "BRASIL 247")
     val categories = listOf("TODAS", "POLÍTICA", "EM CIMA DA HORA", "MERCADO", "GESTÃO GOVERNAMENTAL", "INFRAESTRUTURA", "SOCIEDADE")
 
-    val filteredNews = remember(newsList, selectedSource, selectedCategory, searchQuery, showOnlyBookmarked) {
+    val filteredNews = remember(newsList, selectedCategory, searchQuery, showOnlyBookmarked) {
         newsList.filter { news ->
-            val matchesSource = when (selectedSource) {
-                "TODOS PORTAIS" -> true
-                "FOLHA" -> news.source.contains("Folha", ignoreCase = true) || news.location.contains("Folha", ignoreCase = true)
-                "CNN BRASIL" -> news.source.contains("CNN", ignoreCase = true) || news.location.contains("CNN", ignoreCase = true)
-                "O ANTAGONISTA" -> news.source.contains("Antagonista", ignoreCase = true) || news.location.contains("Antagonista", ignoreCase = true)
-                "BRASIL 247" -> news.source.contains("Brasil 247", ignoreCase = true) || news.location.contains("Brasil 247", ignoreCase = true)
-                else -> true
-            }
-
             val matchesCategory = when (selectedCategory) {
                 "TODAS" -> true
                 else -> news.category.contains(selectedCategory, ignoreCase = true) || news.title.contains(selectedCategory, ignoreCase = true)
@@ -100,7 +89,7 @@ fun NewsFeedScreen(
 
             val matchesBookmark = !showOnlyBookmarked || news.isBookmarked
 
-            matchesSource && matchesCategory && matchesSearch && matchesBookmark
+            matchesCategory && matchesSearch && matchesBookmark
         }
     }
 
@@ -221,46 +210,17 @@ fun NewsFeedScreen(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Source Filter Chips Row
+            // Category Filter Chips Row
             Text(
-                text = "FILTRAR POR PORTAL:",
-                fontSize = 10.sp,
+                text = "FILTRAR POR CATEGORIA:",
+                fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 color = EditorialInkMuted,
                 letterSpacing = 0.5.sp
             )
             Spacer(modifier = Modifier.height(4.dp))
             LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                items(sources) { src ->
-                    val isSelected = selectedSource == src
-                    FilterChip(
-                        selected = isSelected,
-                        onClick = { selectedSource = src },
-                        label = { Text(src, fontSize = 10.sp, fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = EditorialNavyDeep,
-                            selectedLabelColor = Color.White,
-                            containerColor = MaterialTheme.colorScheme.surface
-                        ),
-                        border = FilterChipDefaults.filterChipBorder(
-                            borderColor = if (isSelected) EditorialNavyDeep else EditorialBorder,
-                            selectedBorderColor = EditorialNavyDeep,
-                            borderWidth = 1.dp,
-                            enabled = true,
-                            selected = isSelected
-                        )
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Category Filter Chips Row
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items(categories) { cat ->
@@ -268,7 +228,7 @@ fun NewsFeedScreen(
                     FilterChip(
                         selected = isSelected,
                         onClick = { selectedCategory = cat },
-                        label = { Text(cat, fontSize = 10.sp, fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal) },
+                        label = { Text(cat, fontSize = 11.sp, fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = EditorialCobaltLight,
                             selectedLabelColor = EditorialNavyDeep,

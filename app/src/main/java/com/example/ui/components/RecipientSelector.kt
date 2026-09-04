@@ -76,7 +76,7 @@ fun RecipientSelector(
                 )
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "1. DESTINATÁRIO (TOM DE VOZ)",
+                    text = "1. SERVIÇO DE E-MAIL (DESTINO AUTOMAÇÃO)",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = EditorialNavyDeep,

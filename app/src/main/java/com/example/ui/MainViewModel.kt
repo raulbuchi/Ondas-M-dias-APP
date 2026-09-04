@@ -177,6 +177,46 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _uiState.value = _uiState.value.copy(statusNotification = null)
     }
 
+    // N8N Email Dispatch Method
+    fun dispatchEmailToN8n(context: Context) {
+        val currentState = _uiState.value
+        val recipient = currentState.selectedRecipient
+        val subject = currentState.titleInput.trim().ifBlank { recipient.exampleTitle }
+
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = android.net.Uri.parse("mailto:${recipient.email}")
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, "") // Email strictly containing ONLY the subject line
+        }
+
+        try {
+            val chooser = Intent.createChooser(intent, "Disparar E-mail N8N (${recipient.email})")
+            chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(chooser)
+
+            // Log dispatch in history repository
+            viewModelScope.launch {
+                publicationRepo.savePublication(
+                    recipientEmail = recipient.email,
+                    recipientName = recipient.name,
+                    title = subject,
+                    rawIdea = "Disparo de e-mail efetuado para o servidor N8N (${recipient.email})",
+                    parsedOutput = com.example.data.remote.ParsedOutput(
+                        fullMarkdown = "# E-mail Disparado para N8N\n\n**Serviço de E-mail:** ${recipient.name} (`${recipient.email}`)\n\n**Assunto (Subject):** $subject\n\n*Este e-mail contendo apenas o assunto foi disparado para o servidor n8n, que executará o fluxo de automação.*",
+                        articleText = "E-mail disparado para ${recipient.email} com o assunto: '$subject'",
+                        audioScript = "Disparo de e-mail realizado para ${recipient.name} com o assunto: $subject.",
+                        imagePrompt = "Ilustração editorial sobre: $subject"
+                    )
+                )
+                _uiState.value = _uiState.value.copy(
+                    statusNotification = "E-mail disparado para ${recipient.email} com assunto '$subject'!"
+                )
+            }
+        } catch (e: Exception) {
+            Toast.makeText(context, "Não foi possível abrir o app de e-mail: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
     // Generator logic
     fun generateContent() {
         val currentState = _uiState.value

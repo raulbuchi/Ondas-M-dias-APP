@@ -42,25 +42,29 @@ Sua tarefa é gerar, em uma única resposta, as três saídas abaixo estruturada
 
 ### 🗺️ MAPEAMENTO DE IDENTIDADE E TOM DE VOZ (Por E-mail):
 
-1. DESTINATÁRIO: politica@omg-com.com (Ondas Médias Comunicação)
-   - Nicho: Política, gestão governamental, infraestrutura e sociedade no Paraná e Litoral (ênfase em Matinhos).
-   - Tom: Jornalístico, informativo, analítico, sério e focado no desenvolvimento regional.
-
-2. DESTINATÁRIO: blog@raulbuchi.ch (Raul Buchi | Psicoterapia & Coaching)
-   - Nicho: Psicoterapia (TCC), coaching de transformação, burnout, escolhas pessoais ("bônus e ônus") e redefinição pessoal com sensibilidade artística.
+1. DESTINATÁRIO: blog@raulbuchi.ch (Blog Do Raul Buchi)
+   - Nicho: Psicoterapia (TCC), coaching de transformação, burnout, escolhas pessoais ("bônus e ônus") e redefinição pessoal.
    - Tom: Empático, reflexivo, encorajador, clínico porém acessível, profundamente humano.
 
-3. DESTINATÁRIO: eve@blogdoeverson.com (Dr. Everson Buchi | Psiquiatria)
+2. DESTINATÁRIO: eve@blogdoeverson.ch (Blog do Dr. Everson)
    - Nicho: Saúde mental, tratamento de ansiedade, depressão, sobriedade/recuperação e desestigmatização psiquiátrica.
    - Tom: Acolhedor, cientificamente embasado, informativo, seguro e empático.
 
-4. DESTINATÁRIO: trilhas@filosofiaetrilhas.com (Filosofia e Trilhas)
+3. DESTINATÁRIO: rieden@riedenzetung.ch (Blog de Rieden)
+   - Nicho: Vida comunitária local na Suíça (Rieden/Linthgebiet), culinária tradicional e crônicas do dia a dia.
+   - Tom: Caloroso, comunitário, nostálgico, cultural e acolhedor.
+
+4. DESTINATÁRIO: trilhas@filosofiaetrilhas.com (Blog de Filosofia e Trilhas)
    - Nicho: Trilhas físicas, montanhismo, natureza do Sul do Brasil e Suíça combinados com reflexões filosóficas profundas e fotografia.
    - Tom: Contemplativo, descritivo, aventureiro, inspirador.
 
-5. DESTINATÁRIO: rieden@riedenzeitung.ch (Rieden Zeitung)
-   - Nicho: Vida comunitária local na Suíça (Rieden/Linthgebiet), culinária tradicional (como as especialidades do Restaurante Speer), tradições locais e crônicas do dia a dia.
-   - Tom: Caloroso, comunitário, nostálgico, cultural e acolhedor.
+5. DESTINATÁRIO: politica@omg-com.com (Blog de Comunicação - Ondas Médias)
+   - Nicho: Política, gestão governamental, infraestrutura e sociedade no Paraná e Litoral (ênfase em Matinhos).
+   - Tom: Jornalístico, informativo, analítico, sério e focado no desenvolvimento regional.
+
+6. DESTINATÁRIO: blog@institutoideb.com (Blog do Instituto IDEB)
+   - Nicho: Educação, avaliação educacional, desenvolvimento socioeducativo, políticas públicas e inovação pedagógica.
+   - Tom: Institucional, educativo, analítico, propositivo e fundamentado.
 
 ---
 
